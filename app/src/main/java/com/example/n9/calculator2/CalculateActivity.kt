@@ -1,11 +1,10 @@
 package com.example.n9.calculator2
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.n9.R
 import kotlinx.android.synthetic.main.activity_calculate.*
-import kotlinx.android.synthetic.main.activity_calculator.*
 
 class CalculateActivity : AppCompatActivity() {
     var operator = ""
@@ -15,75 +14,79 @@ class CalculateActivity : AppCompatActivity() {
         eventListener()
     }
 
-
-
-    @SuppressLint("SetTextI18n")
-    fun eventListener(){
+    private fun eventListener(){
         btnNum1.setOnClickListener {
-            setNumber("1")
+            setNumber(resources.getString(R.string.btn1))
         }
         btnNum2.setOnClickListener {
-            setNumber("2")
+            setNumber(resources.getString(R.string.btn2))
 
         }
         btnNum3.setOnClickListener {
-            setNumber("3")
+            setNumber(resources.getString(R.string.btn3))
 
         }
         btnNum4.setOnClickListener {
-            setNumber("4")
+            setNumber(resources.getString(R.string.btn4))
 
         }
         btnNum5.setOnClickListener {
-            setNumber("5")
+            setNumber(resources.getString(R.string.btn5))
 
         }
         btnNum6.setOnClickListener {
-            setNumber("6")
+            setNumber(resources.getString(R.string.btn6))
 
         }
         btnNum7.setOnClickListener {
-            setNumber("7")
+            setNumber(resources.getString(R.string.btn7))
 
         }
         btnNum8.setOnClickListener {
-            setNumber("8")
+            setNumber(resources.getString(R.string.btn8))
 
         }
         btnNum9.setOnClickListener {
-            setNumber("9")
+            setNumber(resources.getString(R.string.btn9))
 
         }
         btnNum0.setOnClickListener {
-            setNumber("0")
+            setNumber(resources.getString(R.string.btn0))
 
         }
-        btnNumMinus.setOnClickListener {
-            setData("-")
+        btnMinus.setOnClickListener {
+            setOpe("-")
 
 
         }
         btnTimes.setOnClickListener {
-            setData("X")
+            setOpe("X")
 
         }
-        btnNumPlus.setOnClickListener {
-            setData("+")
+        btnPlus.setOnClickListener {
+            setOpe("+")
 
         }
-        btnNumDevide.setOnClickListener {
-            setData("/")
+        btnDivide.setOnClickListener {
+            setOpe("/")
         }
-        btnNumE.setOnClickListener {
+        btnE.setOnClickListener {
             val number = tvInput.text.split(operator)
-            when (operator){
-                "X" -> tvOutPut.text = (number.first().toInt() * number.last().toInt()).toString()
-                "+" -> tvOutPut.text = (number.first().toInt() + number.last().toInt()).toString()
-                "-" -> tvOutPut.text = (number.first().toInt() - number.last().toInt()).toString()
-                else -> if (number.last() != "" || number.last() != "0"){
-                    tvOutPut.text = (number.first().toInt() / number.last().toInt()).toString()
+            Log.d("Total", "${number.size}")
+            Log.d("Total", "${number}")
+            if(number.last().isNotEmpty() && number.first().isNotEmpty()){
+                when (operator){
+                    "X" -> tvOutPut.text = (number.first().toInt() * number.last().toInt()).toString()
+                    "+" -> tvOutPut.text = (number.first().toInt() + number.last().toInt()).toString()
+                    "-" -> tvOutPut.text = (number.first().toInt() - number.last().toInt()).toString()
+                    else -> if (number.last() != "0"){
+                        tvOutPut.text = (number.first().toInt() / number.last().toInt()).toString()
+                    }else{
+                        tvOutPut.text = "Cannot Divide By Zero"
+                    }
                 }
-            }
+            }else
+                tvOutPut.text = number.first().toString()
         }
         btnDelete.setOnClickListener {
             tvInput.text = tvInput.text.dropLast(1)
@@ -100,7 +103,7 @@ class CalculateActivity : AppCompatActivity() {
         }
     }
 
-    fun setData(ope: String){
+    fun setOpe(ope: String){
         if (operator == ""){
             tvInput.text = "${tvInput.text}$ope"
 

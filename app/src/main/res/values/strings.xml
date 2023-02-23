@@ -19,6 +19,13 @@
     <string name="btnD">/</string>
     <string name="btnE">=</string>
     <string name="btnDelete">C</string>
+    <string name="about_Us">About Us</string>
+    <string name="help">Help</string>
+    <string name="item_1">Item 1</string>
+    <string name="item_2">Item 2</string>
+    <string name="item_3">Item 3</string>
+
+
 
 
 </resources>
