@@ -1,11 +1,9 @@
 package com.example.n9.calculator2
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.n9.R
 import kotlinx.android.synthetic.main.activity_calculate.*
-
 class CalculateActivity : AppCompatActivity() {
     var operator = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,59 +11,45 @@ class CalculateActivity : AppCompatActivity() {
         setContentView(R.layout.activity_calculate)
         eventListener()
     }
-
     private fun eventListener(){
         btnNum1.setOnClickListener {
             setNumber(resources.getString(R.string.btn1))
         }
         btnNum2.setOnClickListener {
             setNumber(resources.getString(R.string.btn2))
-
         }
         btnNum3.setOnClickListener {
             setNumber(resources.getString(R.string.btn3))
-
         }
         btnNum4.setOnClickListener {
             setNumber(resources.getString(R.string.btn4))
-
         }
         btnNum5.setOnClickListener {
             setNumber(resources.getString(R.string.btn5))
-
         }
         btnNum6.setOnClickListener {
             setNumber(resources.getString(R.string.btn6))
-
         }
         btnNum7.setOnClickListener {
             setNumber(resources.getString(R.string.btn7))
-
         }
         btnNum8.setOnClickListener {
             setNumber(resources.getString(R.string.btn8))
-
         }
         btnNum9.setOnClickListener {
             setNumber(resources.getString(R.string.btn9))
-
         }
         btnNum0.setOnClickListener {
             setNumber(resources.getString(R.string.btn0))
-
         }
         btnMinus.setOnClickListener {
             setOpe("-")
-
-
         }
         btnTimes.setOnClickListener {
             setOpe("X")
-
         }
         btnPlus.setOnClickListener {
             setOpe("+")
-
         }
         btnDivide.setOnClickListener {
             setOpe("/")
@@ -94,7 +78,6 @@ class CalculateActivity : AppCompatActivity() {
                 tvInput.text = "0"
             }
         }
-
         btnDelete.setOnLongClickListener {
             tvInput.text = "0"
             tvOutPut.text = ""
@@ -102,11 +85,9 @@ class CalculateActivity : AppCompatActivity() {
             true
         }
     }
-
     fun setOpe(ope: String){
         if (operator == ""){
             tvInput.text = "${tvInput.text}$ope"
-
         }else{
             tvInput.text = tvInput.text.toString().replace(operator, ope)
         }
@@ -123,7 +104,5 @@ class CalculateActivity : AppCompatActivity() {
             tvInput.text = ""
         }
         tvInput.text = "${tvInput.text}$number"
-
     }
-
 }
