@@ -14,21 +14,7 @@
         android:theme="@style/themeDefault"
         tools:targetApi="31">
         <activity
-            android:name=".PrefManager"
-            android:exported="false"
-            tools:ignore="Instantiatable" />
-        <activity
-            android:name=".LogoutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".login.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".menus.MenusActivity"
-            android:exported="false"
-            android:theme="@style/themeDefault." />
-        <activity
-            android:name=".calculator2.CalculateActivity"
+            android:name=".recyclerview.SpotifyRecyclerviewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,11 +23,27 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".spotify.SpotifyActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".LogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".menus.MenusActivity"
+            android:exported="false"
+            android:theme="@style/themeDefault." />
+        <activity
+            android:name=".calculator2.CalculateActivity"
+            android:exported="true" />
+        <activity
             android:name=".calculator.CalculatorActivity"
             android:exported="false" />
         <activity
             android:name=".Test"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".home.HomeActivity"
             android:exported="false" />

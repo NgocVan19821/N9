@@ -13,18 +13,18 @@ class MenusActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menus)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        menu?.getItem(0)?.isEnabled = false
-        menu?.getItem(1)?.isVisible = false
-        return super.onPrepareOptionsMenu(menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        super.onCreateOptionsMenu(menu)
+//        menuInflater.inflate(R.menu.main, menu)
+//        return true
+//
+//    }
+//
+//    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+//        menu?.getItem(0)?.isEnabled = false
+//        menu?.getItem(1)?.isVisible = false
+//        return super.onPrepareOptionsMenu(menu)
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var selectedOption = ""

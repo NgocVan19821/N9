@@ -1,17 +1,24 @@
 package com.example.n9.calculator2
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.n9.R
 import kotlinx.android.synthetic.main.activity_calculate.*
+
 class CalculateActivity : AppCompatActivity() {
     var operator = ""
+    var abc: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculate)
-        eventListener()
+        eventListener(abc)
     }
-    private fun eventListener(){
+
+    private fun eventListener(asd: String?) {
+        if (asd != null) tvInput.text = asd
+        asd?.also { it -> tvInput.text = it }
+
         btnNum1.setOnClickListener {
             setNumber(resources.getString(R.string.btn1))
         }
@@ -58,23 +65,26 @@ class CalculateActivity : AppCompatActivity() {
             val number = tvInput.text.split(operator)
             Log.d("Total", "${number.size}")
             Log.d("Total", "${number}")
-            if(number.last().isNotEmpty() && number.first().isNotEmpty()){
-                when (operator){
-                    "X" -> tvOutPut.text = (number.first().toInt() * number.last().toInt()).toString()
-                    "+" -> tvOutPut.text = (number.first().toInt() + number.last().toInt()).toString()
-                    "-" -> tvOutPut.text = (number.first().toInt() - number.last().toInt()).toString()
-                    else -> if (number.last() != "0"){
+            if (number.last().isNotEmpty() && number.first().isNotEmpty()) {
+                when (operator) {
+                    "X" -> tvOutPut.text =
+                        (number.first().toInt() * number.last().toInt()).toString()
+                    "+" -> tvOutPut.text =
+                        (number.first().toInt() + number.last().toInt()).toString()
+                    "-" -> tvOutPut.text =
+                        (number.first().toInt() - number.last().toInt()).toString()
+                    else -> if (number.last() != "0") {
                         tvOutPut.text = (number.first().toInt() / number.last().toInt()).toString()
-                    }else{
+                    } else {
                         tvOutPut.text = "Cannot Divide By Zero"
                     }
                 }
-            }else
+            } else
                 tvOutPut.text = number.first().toString()
         }
         btnDelete.setOnClickListener {
             tvInput.text = tvInput.text.dropLast(1)
-            if (tvInput.text.isEmpty()){
+            if (tvInput.text.isEmpty()) {
                 tvInput.text = "0"
             }
         }
@@ -85,22 +95,23 @@ class CalculateActivity : AppCompatActivity() {
             true
         }
     }
-    fun setOpe(ope: String){
-        if (operator == ""){
+    fun setOpe(ope: String) {
+        if (operator == "") {
             tvInput.text = "${tvInput.text}$ope"
-        }else{
+
+        } else {
             tvInput.text = tvInput.text.toString().replace(operator, ope)
         }
         operator = ope
     }
 
-    fun setNumber(number: String){
-        if (tvOutPut.text.isNotEmpty()){
+    fun setNumber(number: String) {
+        if (tvOutPut.text.isNotEmpty()) {
             tvInput.text = "0"
             tvOutPut.text = ""
             operator = ""
         }
-        if (tvInput.text == "0"){
+        if (tvInput.text == "0") {
             tvInput.text = ""
         }
         tvInput.text = "${tvInput.text}$number"
